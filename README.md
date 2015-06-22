@@ -2,6 +2,8 @@
 
 cpputestのお勉強
 
+アサーションマクロ
+<pre>
 $CPPUTEST_HOME/include/CppUTest/UtestMacros.h
 CHECK(condition)
 CHECK_TEXT(condition, text)
@@ -16,3 +18,4 @@ BYTES_EQUAL(expected, actual)
 POINTERS_EQUAL(expected, actual)
 BITS_EQUAL(expected,actual,mask)
 FAIL(text)
+</pre>
