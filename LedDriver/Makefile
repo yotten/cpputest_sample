@@ -21,15 +21,7 @@ TEST_SRC_DIRS = \
 INCLUDE_DIRS =\
   .\
   $(CPPUTEST_HOME)/include\
-  include/IO\
   include/\
-  mocks\
-  include/util\
-  include/HomeAutomation\
-  include/LedDriver\
-  include/MyOS\
-  include/dvr\
-  include/zune\
 
 MOCKS_SRC_DIRS = \
 	mocks\
