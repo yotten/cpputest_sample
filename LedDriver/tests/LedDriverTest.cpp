@@ -5,17 +5,18 @@ extern "C"
 #include "LedDriver.h"
 }
 
-#include <stdint.h>
-
+static uint16_t virtualLeds;
+ 
 TEST_GROUP(LedDriver)
 {
-    void setup()
-    {
-    }
+	void setup()
+	{
+		LedDriver_Create(&virtualLeds);	
+	}
 
-    void teardown()
-    {
-    }
+	void teardown()
+	{
+	}
 };
 
 TEST(LedDriver, LedsOffAfterCreate)
@@ -27,16 +28,12 @@ TEST(LedDriver, LedsOffAfterCreate)
 
 TEST(LedDriver, TurnOnLedOne)
 {
-	uint16_t virtualLeds;
-	LedDriver_Create(&virtualLeds);
 	LedDriver_TurnOn(1);
 	LONGS_EQUAL(1, virtualLeds);	
 }
 
 TEST(LedDriver, TurnOffLedOne)
 {
-	uint16_t virtualLeds;
-	LedDriver_Create(&virtualLeds);
 	LedDriver_TurnOn(1);
 	LedDriver_TurnOff(1);
 	LONGS_EQUAL(0, virtualLeds);
