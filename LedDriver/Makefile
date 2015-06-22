@@ -22,6 +22,7 @@ INCLUDE_DIRS =\
   .\
   $(CPPUTEST_HOME)/include\
   include/IO\
+  include/\
   mocks\
   include/util\
   include/HomeAutomation\
