@@ -39,3 +39,10 @@ TEST(LedDriver, TurnOffLedOne)
 	LONGS_EQUAL(0, virtualLeds);
 }
 
+TEST(LedDriver, TurnOnMultipleLeds)
+{
+	LedDriver_TurnOn(9);
+	LedDriver_TurnOn(8);
+	LONGS_EQUAL(0x0180, virtualLeds);
+}
+ 
