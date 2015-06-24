@@ -47,15 +47,12 @@ TEST(LedDriver, TurnOnMultipleLeds)
 	LONGS_EQUAL(0x0180, virtualLeds);
 }
 
-#if 0
 TEST(LedDriver, TurnOffAnyLed)
 {
-	LedDriver_TurnOn(9);
-	LedDriver_TurnOn(8);
+	LedDriver_TurnAllOn();
 	LedDriver_TurnOff(8);
-	LONGS_EQUAL(0x100, virtualLeds);
+	CHECK_EQUAL(0xff7f, virtualLeds);
 }
-#endif
 
 TEST(LedDriver, AllOn)
 {
