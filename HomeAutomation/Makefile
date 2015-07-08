@@ -41,7 +41,8 @@ INCLUDE_DIRS =\
   tests/\
   mocks
 
-CPPUTEST_WARNINGFLAGS = -Wall -Werror -Wswitch-default 
+#CPPUTEST_WARNINGFLAGS = -Wall -Werror -Wswitch-default 
+CPPUTEST_WARNINGFLAGS = -Wall -Wswitch-default
 CPPUTEST_WARNINGFLAGS += -Wconversion -Wswitch-enum 
 CPPUTEST_CFLAGS += -std=c89
 CPPUTEST_CFLAGS += -Wextra 
