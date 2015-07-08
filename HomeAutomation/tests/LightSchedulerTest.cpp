@@ -37,7 +37,6 @@ TEST(LightScheduler, NoScheduleNothingHappens)
 	LONGS_EQUAL(LIGHT_STATE_UNKNOWN, LightControllerSpy_GetLastState());
 }
 
-#if 0
 )TEST(LightScheduler, ScheduleOnEverydayNotTimeYet)
 {
 	LightScheduler_ScheduleTurnOn(3, EVERYDAY, 1200);
@@ -48,4 +47,3 @@ TEST(LightScheduler, NoScheduleNothingHappens)
 	LONGS_EQUAL(LIGHT_ID_UNKNOWN, LightControllerSpy_GetLastId());
 	LONGS_EQUAL(LIGHT_STATE_UNKNOWN, LightControllerSpy_GetLastState());
 }
-#endif
