@@ -37,7 +37,7 @@ TEST(LightScheduler, NoScheduleNothingHappens)
 	LONGS_EQUAL(LIGHT_STATE_UNKNOWN, LightControllerSpy_GetLastState());
 }
 
-)TEST(LightScheduler, ScheduleOnEverydayNotTimeYet)
+TEST(LightScheduler, ScheduleOnEverydayNotTimeYet)
 {
 	LightScheduler_ScheduleTurnOn(3, EVERYDAY, 1200);
 	FakeTimeService_SetDay(MONDAY);
