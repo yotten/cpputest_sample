@@ -19,6 +19,28 @@ typedef struct {
 
 static ScheduledLightEvent scheduledEvent;
 
+static void operateLight(ScheduledLightEvent *lightEvent)
+{
+	if (lightEvent->event == TURN_ON) {
+		LightController_On(scheduledEvent.id);
+	} else {
+		LightController_Off(scheduledEvent.id);
+	}
+}
+
+static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
+{
+	if (lightEvent->id == UNUSED) {
+		return;
+	}
+
+	if (time->minuteOfDay != lightEvent->minuteOfDay) {
+		return;
+	}
+
+	operateLight(lightEvent);
+}
+
 void LightScheduler_Create(void)
 {
 	/* LightController_Create(); */
@@ -35,18 +57,9 @@ void LightScheduler_Wakeup(void)
 
 	TimeService_GetTime(&time);
 
+	proccessEventDueNow(&time, &scheduledEvent);
 	if (scheduledEvent.id == UNUSED) {
 		return;
-	}
-
-	if (time.minuteOfDay != scheduledEvent.minuteOfDay) {
-		return;
-	}
-
-	if (scheduledEvent.event == TURN_ON) {
-		LightController_On(scheduledEvent.id);
-	} else {
-		LightController_Off(scheduledEvent.id);
 	}
 }
 
