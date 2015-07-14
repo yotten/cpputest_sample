@@ -90,7 +90,7 @@ TEST(LightScheduler, ScheduleTuesdayButItsMonday)
 
 TEST(LightScheduler, ScheduleTuesdayAndItsTuesday)
 {
-	LightScheduler_ScheduleTurnOff(3, TUESDAY, 1200);
+	LightScheduler_ScheduleTurnOn(3, TUESDAY, 1200);
 	setTimeTo(TUESDAY, 1200);
 
 	LightScheduler_Wakeup();
