@@ -13,6 +13,7 @@ enum {
 
 typedef struct {
 	int id;
+	Day day;
 	int minuteOfDay;
 	int event;
 } ScheduledLightEvent;
@@ -22,6 +23,7 @@ static ScheduledLightEvent scheduledEvent;
 static void scheduleEvent(int id, Day day, int minuteOfDay, int event)
 {
 	scheduledEvent.id = id;
+	scheduledEvent.day = day;
 	scheduledEvent.minuteOfDay = minuteOfDay;
 	scheduledEvent.event = event;
 }
@@ -38,6 +40,10 @@ static void operateLight(ScheduledLightEvent *lightEvent)
 static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
 {
 	if (lightEvent->id == UNUSED) {
+		return;
+	}
+
+	if (lightEvent->day != EVERYDAY) {
 		return;
 	}
 
