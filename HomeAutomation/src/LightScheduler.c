@@ -39,11 +39,14 @@ static void operateLight(ScheduledLightEvent *lightEvent)
 
 static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
 {
+	int reactionDay = lightEvent->day;
+	int today = time->dayOfWeek;
+
 	if (lightEvent->id == UNUSED) {
 		return;
 	}
 
-	if (lightEvent->day != EVERYDAY) {
+	if (lightEvent->day != EVERYDAY && reactionDay != today) {
 		return;
 	}
 
