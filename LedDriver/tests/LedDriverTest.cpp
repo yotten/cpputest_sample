@@ -60,6 +60,13 @@ TEST(LedDriver, AllOn)
 	LONGS_EQUAL(0xffff, virtualLeds);
 }
 
+IGNORE_TEST(LedDriver, LedMemoryIsNotReadable)
+{
+	virtualLeds = 0xffff;
+	LedDriver_TurnOn(8);
+	LONGS_EQUAL(0x80, virtualLeds);
+}
+
 #if 0
 TEST(LedDriver, IsOn)
 {
