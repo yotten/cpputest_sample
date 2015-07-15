@@ -36,7 +36,7 @@ static void operateLight(ScheduledLightEvent *lightEvent)
 		LightController_Off(scheduledEvent.id);
 	}
 }
-
+#include <stdio.h>
 static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
 {
 	int reactionDay = lightEvent->day;
@@ -46,7 +46,11 @@ static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
 		return;
 	}
 
-	if (lightEvent->day != EVERYDAY && reactionDay != today) {
+	if (reactionDay == WEEKEND && today != SATURDAY) {
+		return;
+	}
+
+	if (reactionDay != WEEKEND && reactionDay != EVERYDAY && reactionDay != today) {
 		return;
 	}
 
@@ -71,12 +75,10 @@ void LightScheduler_Wakeup(void)
 {
 	Time time;
 
+
 	TimeService_GetTime(&time);
 
 	proccessEventDueNow(&time, &scheduledEvent);
-	if (scheduledEvent.id == UNUSED) {
-		return;
-	}
 }
 
 void LightScheduler_ScheduleTurnOn(int id, Day day, int minute)
