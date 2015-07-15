@@ -46,7 +46,7 @@ static void proccessEventDueNow(Time *time, ScheduledLightEvent *lightEvent)
 		return;
 	}
 
-	if (reactionDay == WEEKEND && today != SATURDAY) {
+	if (reactionDay == WEEKEND && (today != SATURDAY && today != SUNDAY)) {
 		return;
 	}
 
